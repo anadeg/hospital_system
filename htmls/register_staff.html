@@ -1,9 +1,13 @@
 <!DOCTYPE HTML>
 <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Staff Registration</title>
+    </head>
     <body>
     {% include 'navigation.html' %}
     <br>
-    <h2> Add Staff </h2>
+    <h2> Register Staff </h2>
     <form action="add_stuff/" method="post">
         {% csrf_token %}
         <input name="phone" placeholder="phone">
