@@ -1,10 +1,24 @@
 <!DOCTYPE HTML>
 <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Hospital System Homepage</title>
+    </head>
     <body>
     <form action="">
         <div>
             <button style="display:block; margin: 0 auto;">
-                <a href="{% url 'sign_in' %}">Sing In</a>
+                <a href="{% url 'log_in_clt' %}">Client Log In</a>
+            </button>
+        </div>
+        <div>
+            <button style="display:block; margin: 0 auto;">
+                <a href="{% url 'log_in_stf' %}">Staff Log In</a>
+            </button>
+        </div>
+        <div>
+            <button style="display:block; margin: 0 auto;">
+                <a href="{% url 'log_in_adm' %}">Admin Log In</a>
             </button>
         </div>
         <div>

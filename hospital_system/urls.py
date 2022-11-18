@@ -29,15 +29,37 @@ urlpatterns = [
     path('register/', views.register, name='reg'),
     path('register/add/', views.add, name='add'),
 
-    path('sign_in/', views.sign_in, name='sign_in'),
+    path('log_in_client/', views.log_in_clt, name='log_in_clt'),
+    path('log_in_staff/', views.log_in_stf, name='log_in_stf'),
+    path('log_in_admin/', views.log_in_adm, name='log_in_adm'),
 
     path('register_card/', views.register_card, name='reg_card'),
     path('register_card/add/', views.add, name='reg_card'),
 
     path('choose_medical_test/', views.choose_med_test, name='choose_med_test'),
 
-    path('cures/', views.choose_cure, name='find_cures'),
-    path('cures/<str:cure_title>', views.choose_cure, name='find_cures_title'),
+    path('cures/', views.find_cure, name='find_cures'),
+    path('cures/<str:cure_title>', views.find_cure, name='find_cures_title'),
+
+    path('client/', views.client_homepage, name='clt'),
+    # path('log_in/check/', views.check, name='check'),
+    # path('client/<int:id>', views.client_homepage, name='clt_id'),
+    path('client/doctor_card_order/', views.add, name='clt_dc_order'),
+    path('client/medical_test_order/', views.add, name='clt_mt_order'),
+    path('client/card_registration/', views.register_card, name='clt_card_reg'),
+    path('client/choose_region', views.add, name='clt_region'),
+    path('client/cures_search', views.find_cure, name='clt_c_search'),
+    path('client/hospital_search', views.add, name='clt_h_search'),
+
+    path('staff/', views.staff_homepage, name='stf'),
+    path('staff/list/', views.client_list, name='stf_lst'),
+    path('staff/registration_requests/', views.card_registration_list, name='stf_rr'),
+
+    path('hospital_admin/', views.admin_hp, name='adm'),
+    path('hospital_admin/hospital_records', views.add, name='adm_hr'),
+    path('hospital_admin/cure_records', views.add, name='adm_cr'),
+    path('hospital_admin/staff_records', views.add, name='adm_sr'),
+    path('hospital_admin/staff_registration', views.adm_register_staff, name='adm_sreg'),
 
     path('hello/', views.add, name='hello')
 ]
