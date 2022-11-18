@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medical Tests</title>
+</head>
+<body>
+    {% include 'navigation.html' %}
+    <br>
+    <h2>Choose Medical Test</h2>
+    <table cellspacing="2" border="1" cellpadding="5">
+        <th>Title</th><th>Hospital</th><th>Cabinet No.</th><th>Date</th><th>Time</th>
+        {% for med_test in med_tests %}
+        <tr>
+            <td>{{ med_test.title }}</td>
+            <td>{{ med_test.hospital_title }}</td>
+            <td>{{ med_test.cabinet_no }}</td>
+            <td>{{ med_test.date }}</td>
+            <td>{{ med_test.time }}</td>
+            <td><button>
+                <a href="{% url 'hello' %}">Choose</a>
+        </button></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

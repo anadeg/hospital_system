@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+    <body>
+    {% include 'navigation.html' %}
+    <br>
+    <h2> Register </h2>
+    <form action="add/" method="post">
+        {% csrf_token %}
+        <input name="phone" placeholder="phone">
+        <br>
+        <input name="email" placeholder="email">
+        <br>
+        <input name="password" placeholder="password">
+        <br>
+        <input name="repeat password" placeholder="repeat password">
+        <br>
+        <input type="submit" value="register">
+    </form>
+    </body>
+</html>

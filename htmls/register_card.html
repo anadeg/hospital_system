@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Card</title>
+</head>
+<body>
+  {% include 'navigation.html' %}
+    <br>
+    <h2> Register Card </h2>
+    <form action="add/" method="post">
+        {% csrf_token %}
+        <input name="name" placeholder="name">
+        <br>
+        <input name="age" placeholder="age">
+        <br>
+        <input name="passport_data" placeholder="passport data">
+        <br>
+        <input name="address" placeholder="address">
+        <br>
+        <input type="submit" value="register card">
+    </form>
+</body>
+</html>

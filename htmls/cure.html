@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Cure</title>
+</head>
+<body>
+    {% include 'navigation.html' %}
+    <br>
+    <table cellspacing="2" border="1" cellpadding="5">
+        <th>Title</th><th>Description</th><th>Address</th>
+        {% for cure in cures %}
+        <tr>
+            <td>{{ cure.title }}</td>
+            <td>{{ cure.description }}</td>
+            <td>{{ cure.address }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+
+    <form action="{{ cures_search }}" method="get">
+        <input type="text" name="cures_search" placeholder="cure name">
+        <input type="submit" value="search">
+    </form>
+
+</body>
+</html>
