@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log In Admin</title>
+</head>
+<body>
+    {% include 'navigation.html' %}
+    <br>
+    <h2> Log In </h2>
+        <input name="phone" placeholder="phone">
+        <br>
+        <input name="email" placeholder="email">
+        <br>
+        <input name="password" placeholder="password">
+        <br>
+        <button>
+            <a href="{% url 'adm' %}">Log In</a>
+        </button>
+</body>
+</html>

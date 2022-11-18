@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resiter Staff Requests</title>
+</head>
+<body>
+    {% include 'navigation.html' %}
+    <br>
+    <h2>Card Registration Request</h2>
+    <table cellspacing="2" border="1" cellpadding="5">
+        <th>Name</th><th>Speciality</th><th>Hospital</th><th>Phone</th><th>Email</th>
+        {% for cr in staff_requests %}
+        <tr>
+            <td>{{ cr.name }}</td>
+            <td>{{ cr.speciality }}</td>
+            <td>{{ cr.hospital_title }}</td>
+            <td>{{ cr.phone }}</td>
+            <td>{{ cr.email }}</td>
+            <td>
+              <button>
+                <a href="{% url 'adm_sreg' %}">Accept</a>
+            </button>
+            </td>
+            <td>
+              <button>
+                <a href="{% url 'adm_sreg' %}">Decline</a>
+              </button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

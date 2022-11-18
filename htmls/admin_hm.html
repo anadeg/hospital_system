@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Homepage</title>
+</head>
+<body>
+    {% include 'navigation.html' %}
+    <br>
+    <form action="">
+        <div>
+            <button style="display:block; margin: 0 auto;">
+                <a href="{% url 'adm_hr' %}">Hospital Records</a>
+            </button>
+        </div>
+        <div>
+            <button style="display:block; margin: 0 auto;">
+                <a href="{% url 'adm_cr' %}">Cure Records</a>
+            </button>
+        </div>
+        <div>
+            <button style="display:block; margin: 0 auto;">
+                <a href="{% url 'adm_sr' %}">Staff Records</a>
+            </button></div>
+        <div>
+            <button style="display:block; margin: 0 auto;">
+                <a href="{% url 'adm_sreg' %}">Staff Registration</a>
+            </button>
+        </div>
+    </form>
+</body>
+</html>
