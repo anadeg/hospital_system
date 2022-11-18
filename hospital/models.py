@@ -171,6 +171,48 @@ class Configures(models.Model):
     title = models.CharField(max_length=20)
 
 
+class Constants(models.Model):
+    user_table = models.CharField(max_length=50)
+    user_id = models.IntegerField()
+    admin = models.CharField(max_length=30)
+    password = models.CharField(max_length=50)
+    email = models.CharField(max_length=30)
+    phone = models.CharField(max_length=12)
+
+    staff_table = models.CharField(max_length=50)
+    staff_id = models.IntegerField()
+    speciality = models.CharField(max_length=50)
+    hospital_title = models.CharField(max_length=100)
+    staff_name = models.CharField(max_length=100)
+    staff_phone = models.CharField(max_length=12)
+    staff_email = models.CharField(max_length=30)
+    staff_password = models.CharField(max_length=50)
+
+    medical_card_table = models.CharField(max_length=50)
+    mc_id = models.IntegerField()
+    name = models.CharField(max_length=100)
+    age = models.CharField(max_length=5)
+    passport_data = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
+
+    region_id = models.IntegerField()
+    region_title = models.CharField(max_length=20)
+    country = models.CharField(max_length=30)
+
+    cure_id = models.IntegerField()
+    cure_title = models.CharField(max_length=30)
+    cure_description = models.TextField()
+    cure_address = models.CharField(max_length=100)
+
+    hospital_id = models.IntegerField()
+    hospital_sections = models.CharField(max_length=40)
+    hospital_info = models.TextField()
+
+
+
+
+
+
 
 
 
