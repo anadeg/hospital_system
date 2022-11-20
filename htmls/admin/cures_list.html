@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cures List</title>
+</head>
+<body>
+    {% include 'navigation_admin.html' %}
+    <br>
+    <h2>Cures Table</h2>
+    <table cellspacing="2" border="1" cellpadding="5">
+        <th>Title</th><th>Description</th><th>Address</th>
+        {% for cure in cures %}
+        <tr>
+            <td>{{ cure.title }}</td>
+            <td>{{ cure.description }}</td>
+            <td>{{ cure.address }}</td>
+            <td>
+              <button>
+                <a href="cure_records/change/{{ cure.id }}">Change</a>
+            </button>
+            </td>
+            <td>
+              <button>
+                <a href="cure_records/delete/{{ cure.id }}">Delete</a>
+              </button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <button>
+        <a href="{% url 'adm_cr_add'%}">Add</a>
+    </button>
+
+
+</body>
+</html>

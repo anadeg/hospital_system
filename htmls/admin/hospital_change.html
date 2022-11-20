@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Edit Form</title>
+</head>
+<body>
+<h2>Edit Form</h2>
+    <form action="change_record/{{ hospital.id }}" method="post">
+        {% csrf_token %}
+        Title
+        <br>
+        <input name="title" value="{{ hospital.title }}">
+        <br>
+        Info
+        <br>
+        <input name="info" value="{{ hospital.info }}">
+        <br>
+        Info
+        <br>
+        <input name="sections" value="{{ hospital.sections }}">
+        <br>
+        Address
+        <br>
+        <input name="address" value="{{ hospital.address }}">
+        <br>
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>

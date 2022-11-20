@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Lists</title>
+</head>
+<body>
+{% include 'navigation_admin.html' %}
+    <br>
+    <h2>Hospitals Table</h2>
+    <table cellspacing="2" border="1" cellpadding="5">
+        <th>Title</th><th>Description</th><th>Address</th>
+        {% for hospital in hospitals %}
+        <tr>
+            <td>{{ hospital.title }}</td>
+            <td>{{ hospital.info }}</td>
+            <td>{{ hospital.sections }}</td>
+            <td>{{ hospital.address }}</td>
+            <td>
+              <button>
+                <a href="hospital_records/change/{{ hospital.id }}">Change</a>
+            </button>
+            </td>
+            <td>
+              <button>
+                <a href="hospital_records/delete/{{ hospital.id }}">Delete</a>
+              </button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <button>
+        <a href="{% url 'adm_hr_add' %}">Add</a>
+    </button>
+</body>
+</html>

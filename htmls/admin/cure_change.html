@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Change Cure</title>
+</head>
+<body>
+    <h2>Change Form</h2>
+    <form action="change_record/{{ cure.id }}" method="post">
+        {% csrf_token %}
+        Title
+        <br>
+        <input name="title" value="{{ cure.title }}">
+        <br>
+        Description
+        <br>
+        <input name="description" value="{{ cure.description }}">
+        <br>
+        Address
+        <br>
+        <input name="address" value="{{ cure.address }}">
+        <br>
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>

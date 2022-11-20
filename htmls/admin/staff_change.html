@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Staff</title>
+</head>
+<body>
+<h2>Change Form</h2>
+    <form action="change_record/{{ staff.id }}" method="post">
+        {% csrf_token %}
+        Name
+        <br>
+        <input name="name" value="{{ staff.name }}">
+        <br>
+        Speciality
+        <br>
+        <input name="speciality" value="{{ staff.speciality }}">
+        <br>
+        Hospital
+        <br>
+        <input name="hospital_title" value="{{ staff.hospital_title }}">
+        <br>
+        Cabinet No.
+        <br>
+        <input name="cabinet_no" value="{{ staff.cabinet_no }}">
+        <br>
+        Time
+        <br>
+        <input name="time" value="{{ staff.time }}">
+        <br>
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>

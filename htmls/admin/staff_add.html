@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Staff</title>
+</head>
+<body>
+{% csrf_token %}
+    <form action="add_record" method="post">
+        {% csrf_token %}
+        Name
+        <br>
+        <input name="name">
+        <br>
+        Speciality
+        <br>
+        <input name="speciality">
+        <br>
+        Hospital
+        <br>
+        <input name="hospital_title">
+        <br>
+        Cabinet No.
+        <br>
+        <input name="cabinet_no">
+        <br>
+        Time
+        <br>
+        <input name="time">
+        <br>
+        <input type="submit" value="add">
+    </form>
+</body>
+</html>

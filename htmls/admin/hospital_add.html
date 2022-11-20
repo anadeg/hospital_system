@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Hospital</title>
+</head>
+<body>
+    <form action="add_record" method="post">
+        {% csrf_token %}
+        Title
+        <br>
+        <input name="title">
+        <br>
+        Info
+        <br>
+        <input name="info">
+        <br>
+        Sections
+        <br>
+        <input name="sections">
+        <br>
+        Address
+        <br>
+        <input name="address">
+        <br>
+        <input type="submit" value="add">
+    </form>
+</body>
+</html>

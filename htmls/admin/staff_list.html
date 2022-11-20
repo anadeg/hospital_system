@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff List</title>
+</head>
+<body>
+{% include 'navigation_admin.html' %}
+    <br>
+    <h2>Staff Table</h2>
+    <table cellspacing="2" border="1" cellpadding="5">
+        <th>Name</th><th>Speciality</th><th>Hospital</th><th>Cabinet No.</th><th>Time</th>
+        {% for st in staff %}
+        <tr>
+            <td>{{ st.name }}</td>
+            <td>{{ st.speciality }}</td>
+            <td>{{ st.hospital_title }}</td>
+            <td>{{ st.cabinet_no }}</td>
+            <td>{{ st.time }}</td>
+            <td>
+              <button>
+                <a href="staff_records/change/{{ st.id }}">Change</a>
+            </button>
+            </td>
+            <td>
+                <button>
+                <a href="staff_records/delete/{{ st.id }}">Delete</a>
+              </button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <button>
+        <a href="{% url 'adm_sr_add'%}">Add</a>
+    </button>
+</body>
+</html>
