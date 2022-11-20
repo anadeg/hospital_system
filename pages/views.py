@@ -12,6 +12,10 @@ from hospital.models import (MedicalTestEntity,
 import os
 
 
+class Main:
+    def start(self):
+        pass
+
 class ControllerHome:
     def __init__(self, ui):
         self.ui = ui
