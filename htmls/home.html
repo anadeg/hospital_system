@@ -5,27 +5,43 @@
         <title>Hospital System Homepage</title>
     </head>
     <body>
+
+    <h3>
+    <fieldset>
+        <legend>
+        </legend>
+        <span style="float:left;">Hospital System</span>
+    </fieldset>
+    </h3>
+
     <form action="">
-        <div>
-            <button style="display:block; margin: 0 auto;">
-                <a href="{% url 'log_in_clt' %}">Client Log In</a>
-            </button>
-        </div>
-        <div>
-            <button style="display:block; margin: 0 auto;">
-                <a href="{% url 'log_in_stf' %}">Staff Log In</a>
-            </button>
-        </div>
-        <div>
-            <button style="display:block; margin: 0 auto;">
-                <a href="{% url 'log_in_adm' %}">Admin Log In</a>
-            </button>
-        </div>
+        <fieldset>
+            <legend>Log In</legend>
+                <div>
+                <button style="display:block; margin: 0 auto;">
+                    <a href="{% url 'log_in_clt' %}">Client Log In</a>
+                </button>
+            </div>
+            <br>
+            <div>
+                <button style="display:block; margin: 0 auto;">
+                    <a href="{% url 'log_in_stf' %}">Staff Log In</a>
+                </button>
+            </div>
+            <br>
+            <div>
+                <button style="display:block; margin: 0 auto;">
+                    <a href="{% url 'log_in_adm' %}">Admin Log In</a>
+                </button>
+            </div>
+        </fieldset>
+        <br>
         <div>
             <button style="display:block; margin: 0 auto;">
                 <a href="{% url 'reg' %}">Register</a>
             </button>
         </div>
+        <br>
         <div>
             <button style="display:block; margin: 0 auto;">
                 <a href="{% url 'reg_staff' %}">Register Staff</a>
