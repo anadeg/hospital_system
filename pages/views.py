@@ -2,29 +2,77 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 
-from hospital.models import MedicalTestEntity, CureEntity, HospitalEntity, StaffEntity
+from hospital.models import (MedicalTestEntity,
+                             CureEntity,
+                             HospitalEntity,
+                             StaffEntity,
+                             DoctorCardEntity)
 
 import os
 
 
-def home(request, *args, **kwargs):
-    return render(request, 'home.html', {})
+class ControllerHome:
+    def __init__(self, ui):
+        self.ui = ui
+    def home(self, request, *args, **kwargs):
+        return render(request, self.ui.homepage, {})
+    def create_register_page(self):
+        pass
+    def create_log_in_page(self):
+        pass
+    def create_register_staff_page(self):
+        pass
+
+class UIHome:
+    def __init__(self):
+        self.homepage = 'home.html'
 
 
-def register_staff(request, *args, **kwargs):
-    return render(request, "register_staff.html", {})
+class ControllerRegisterStaff:
+    def __init__(self, ui):
+        self.ui = ui
+    def register_staff(self, request, *args, **kwargs):
+        return render(request, self.ui.page, {})
+    def create_main_page(self):
+        pass
+    def add_stuff(self, request, *args, **kwargs):
+        return HttpResponseRedirect(reverse('home'))
+
+class UIRegisterStaff:
+    def __init__(self):
+        self.page = 'register_staff.html'
 
 
-def add_stuff(request, *args, **kwargs):
-    return HttpResponse("Hello")
+class ControllerRegistration:
+    def __init__(self, ui):
+        self.ui = ui
+    def register(self, request, *args, **kwargs):
+        return render(request, self.ui.page, {})
+    def add(self, request, *args, **kwargs):
+        return render(request, 'home.html', {})
+
+class UIRegistration:
+    def __init__(self):
+        self.page = 'register.html'
 
 
-def register(request, *args, **kwargs):
-    return render(request, 'register.html', {})
+class ControllerLogIn:
+    def __init__(self, ui):
+        self.ui = ui
 
 
-def add(request, *args, **kwargs):
-    return render(request, 'home.html', {})
+
+class UILogInClient:
+    def __init__(self):
+        self.page = 'log_in_clt.html'
+
+class UILogInStaff:
+    def __init__(self):
+        self.page = 'log_in_stf.html'
+
+class UILogInAdmin:
+    def __init__(self):
+        self.page = 'log_in_admin.html'
 
 
 def log_in_clt(request, *args, **kwargs):
@@ -64,6 +112,43 @@ def client_find_cure(request, *args, **kwargs):
     else:
         content = {"cures": cures}
     return render(request, path, content)
+
+
+def client_filter_dc(request, *args, **kwargs):
+    path = os.path.join('client', 'doctor_order_card.html')
+    dc = DoctorCardEntity.objects.all()
+    hospitals = set(dc.get('hospital_title'))
+    specialities = set(dc.get('doctor_speciality'))
+    date = set(dc.get('date'))
+    time = set(dc.get('time'))
+    staff_list = StaffEntity.objects.all()
+    staff = set(staff_list.get('name'))
+    content = {
+        "hospitals": hospitals,
+        "specialities": specialities,
+        "staff": staff,
+        "date": date,
+        "time": time
+    }
+    return render(request, path, content)
+
+
+def client_dc_list(request, *args, **kwargs):
+    path = os.path.join('client', 'order_dc_list.html')
+
+    hospital = request.POST.get('hospitals')
+    speciality = request.POST.get('specialities')
+    name = request.POST.get('name')
+    date = request.POST.get('date')
+    time = request.POST.get('time')
+
+    dc_list = DoctorCardEntity.objects.filter(
+        hospital_title=hospital,
+        speciality=speciality,
+        date=date,
+        time=time
+    )
+    return render(request, path, {"doctor_cards": dc_list, "name": name})
 
 
 def client_homepage(request, *args, **kwargs):
