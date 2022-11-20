@@ -239,6 +239,10 @@ class ControllerRegionChoose:
     def choose_region_page(self, request, *args, **kwargs):
         regions = RegionEntity.objects.all().values()
         return render(request, self.ui.page, {"countries": regions})
+    def create_client_page(self):
+        pass
+    def __change_search(self):
+        pass
 
 class ControllerStaffCardRegistration:
     def __init__(self, ui):
