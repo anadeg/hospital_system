@@ -208,7 +208,15 @@ class Constants(models.Model):
     hospital_sections = models.CharField(max_length=40)
     hospital_info = models.TextField()
 
+#     dc
+    dc_id = models.AutoField(primary_key=True)
+    doctor_speciality = models.CharField(max_length=50)  # should be FK
+    cabinet_no = models.CharField(max_length=4)  # redundant. doctor has cabinet
+    date = models.CharField(max_length=12)
+    time = models.CharField(max_length=4)
 
+#     med test
+    met_test_id = models.AutoField(primary_key=True)
 
 
 
