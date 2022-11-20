@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Doctor Card</title>
+</head>
+<body>
+    <h2>Select Doctor Card</h2>
+    <form action="doctor_cards_list">
+      <select name="hospitals">
+      {% for hospital in hospitals %}
+        <option name="hospital">{{hospital.title}}</option>
+      {% endfor %}
+      </select>
+      <br>
+      <select name="specialities">
+      {% for speciality in specialities %}
+        <option name="speciality">{{speciality.title}}</option>
+      {% endfor %}
+      </select>
+      <br>
+      <select name="staff">
+      {% for st in staff %}
+        <option name="staff">{{st.name}}</option>
+      {% endfor %}
+      </select>
+      <br>
+      <select name="staff">
+      {% for st in staff %}
+        <option name="staff">{{st.name}}</option>
+      {% endfor %}
+      </select>
+      <select name="date">
+      {% for d in date %}
+        <option name="date">{{d}}</option>
+      {% endfor %}
+      </select>
+      <br>
+      <br>
+      <select name="time">
+      {% for t in time %}
+        <option name="time">{{t}}</option>
+      {% endfor %}
+      </select>
+      <br>
+      <br>
+      <input type="submit" value="match">
+    </form>
+</body>
+</html>

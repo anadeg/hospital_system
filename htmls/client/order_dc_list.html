@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pick Up Doctor Card</title>
+</head>
+<body>
+    <h2>Select Doctor Card</h2>
+    <table cellspacing="2" border="1" cellpadding="5">
+        <th>Hospital</th><th>Speciality</th><th>Staff</th><th>Date</th><th>Time</th>
+        {% for dc in doctor_cards %}
+        <tr>
+            <td>{{ dc.hospital_title}}</td>
+            <td>{{ st.speciality }}</td>
+            <td>{{ dc.name }}</td>
+            <td>{{ dc.date }}</td>
+            <td>{{ st.time }}</td>
+            <td>
+              <button>
+                <a href="">Add</a>
+            </button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -5,10 +5,10 @@
     <title>Card Registration</title>
 </head>
 <body>
-    {% include 'navigation.html' %}
+    {% include 'navigation_client.html' %}
     <br>
     <h2> Register Card </h2>
-    <form action="add/" method="post">
+    <form action="add" method="post">
         {% csrf_token %}
         <input name="name" placeholder="name">
         <br>
