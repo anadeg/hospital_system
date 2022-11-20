@@ -12,12 +12,12 @@
         <tr>
             <td>{{ dc.hospital_title}}</td>
             <td>{{ st.speciality }}</td>
-            <td>{{ dc.name }}</td>
+            <td>{{ name }}</td>
             <td>{{ dc.date }}</td>
             <td>{{ st.time }}</td>
             <td>
               <button>
-                <a href="">Add</a>
+                <a href="{% url 'clt' %}">Add</a>
             </button>
             </td>
         </tr>
