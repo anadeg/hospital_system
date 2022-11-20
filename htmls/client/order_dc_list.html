@@ -5,9 +5,10 @@
     <title>Pick Up Doctor Card</title>
 </head>
 <body>
+    {% include 'navigation_client.html' %}
     <h2>Select Doctor Card</h2>
     <table cellspacing="2" border="1" cellpadding="5">
-        <th>Hospital</th><th>Speciality</th><th>Staff</th><th>Date</th><th>Time</th>
+        <th>Hospital</th><th>Speciality</th><th>Staff</th><th>Date</th><th>Time</th><th>Choose</th>
         {% for dc in doctor_cards %}
         <tr>
             <td>{{ dc.hospital_title}}</td>
@@ -17,7 +18,7 @@
             <td>{{ st.time }}</td>
             <td>
               <button>
-                <a href="{% url 'clt' %}">Add</a>
+                <a href="{% url 'clt' %}">Choose</a>
             </button>
             </td>
         </tr>

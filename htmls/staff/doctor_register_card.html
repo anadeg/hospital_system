@@ -9,7 +9,7 @@
     <br>
     <h2>Card Registration Request</h2>
     <table cellspacing="2" border="1" cellpadding="5">
-        <th>Name</th><th>Address</th><th>Passport Date</th><th>Age</th>
+        <th>Name</th><th>Address</th><th>Passport Date</th><th>Age</th><th>Accept</th><th>Reject</th>
         {% for cr in card_requests %}
         <tr>
             <td>{{ cr.name }}</td>
@@ -18,12 +18,12 @@
             <td>{{ cr.age }}</td>
             <td>
               <button>
-                <a href="{% url 'hello' %}">Accept</a>
+                <a href="{% url 'stf' %}">Accept</a>
             </button>
             </td>
             <td>
               <button>
-                <a href="{% url 'hello' %}">Decline</a>
+                <a href="{% url 'stf' %}">Reject</a>
               </button>
             </td>
         </tr>

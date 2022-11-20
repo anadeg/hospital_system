@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Region Search</title>
+</head>
+<body>
+    {% include 'navigation_client.html' %}
+    <br>
+    <table cellspacing="2" border="1" cellpadding="5">
+        <th>Title</th><th>Is Country</th><th>Choose</th>
+        {% for c in countries %}
+        <tr>
+            <td>{{ hospital.title }}</td>
+            <td>{{ hospital.info }}</td>
+            <td>
+              <button>
+                <a href="{% url 'clt' %}">Choose</a>
+              </button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+</body>
+</html>

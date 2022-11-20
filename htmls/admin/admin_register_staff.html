@@ -7,9 +7,9 @@
 <body>
     {% include 'navigation_admin.html' %}
     <br>
-    <h2>Card Registration Request</h2>
+    <h2>Staff Registration Requests</h2>
     <table cellspacing="2" border="1" cellpadding="5">
-        <th>Name</th><th>Speciality</th><th>Hospital</th><th>Phone</th><th>Email</th>
+        <th>Name</th><th>Speciality</th><th>Hospital</th><th>Phone</th><th>Email</th><th>Accept</th><th>Reject</th>
         {% for cr in staff_requests %}
         <tr>
             <td>{{ cr.name }}</td>
@@ -24,7 +24,7 @@
             </td>
             <td>
               <button>
-                <a href="{% url 'adm_sreg' %}">Decline</a>
+                <a href="{% url 'adm_sreg' %}">Reject</a>
               </button>
             </td>
         </tr>
