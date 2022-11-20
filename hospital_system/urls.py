@@ -47,6 +47,7 @@ urlpatterns = [
     path('client/doctor_card_order/', views.add, name='clt_dc_order'),
     path('client/medical_test_order/', views.add, name='clt_mt_order'),
     path('client/card_registration/', views.register_card, name='clt_card_reg'),
+    path('client/card_registration/add', views.register_card_add, name='clt_card_reg_add'),
     path('client/choose_region', views.add, name='clt_region'),
     path('client/cures_search', views.find_cure, name='clt_c_search'),
     path('client/hospital_search', views.add, name='clt_h_search'),
@@ -56,10 +57,28 @@ urlpatterns = [
     path('staff/registration_requests/', views.card_registration_list, name='stf_rr'),
 
     path('hospital_admin/', views.admin_hp, name='adm'),
-    path('hospital_admin/hospital_records', views.add, name='adm_hr'),
-    path('hospital_admin/cure_records', views.add, name='adm_cr'),
-    path('hospital_admin/staff_records', views.add, name='adm_sr'),
+
+    path('hospital_admin/cure_records', views.cures_list, name='adm_cr'),
+    path('hospital_admin/cure_records/change/<int:id>', views.change_cure, name='adm_cr_cng'),
+    path('hospital_admin/cure_records/change/change_record/<int:id>', views.change_cure_record, name='adm_cr_cng'),
+    path('hospital_admin/cure_records/delete/<int:id>', views.delete_cure_record, name='adm_cr_dlt'),
+    path('hospital_admin/cure_records/add', views.add_cure, name='adm_cr_add'),
+    path('hospital_admin/cure_records/add_record', views.add_cure_record, name='adm_cr_add_rec'),
+
+    path('hospital_admin/hospital_records', views.hospitals_list, name='adm_hr'),
+    path('hospital_admin/hospital_records/change/<int:id>', views.change_hospital, name='adm_hr_cng'),
+    path('hospital_admin/hospital_records/change/change_record/<int:id>', views.change_hospital_record, name='adm_hr_cng'),
+    path('hospital_admin/hospital_records/delete/<int:id>', views.delete_hospital_record, name='adm_hr_dlt'),
+    path('hospital_admin/hospital_records/add', views.add_hospital, name='adm_hr_add'),
+    path('hospital_admin/hospital_records/add_record', views.add_hospital_record, name='adm_hr_add_rec'),
+
+    path('hospital_admin/staff_records', views.staff_list, name='adm_sr'),
     path('hospital_admin/staff_registration', views.adm_register_staff, name='adm_sreg'),
+    path('hospital_admin/staff_records/change/<int:id>', views.change_staff, name='adm_sr_cng'),
+    path('hospital_admin/staff_records/change/change_record/<int:id>', views.change_staff_record, name='adm_sr_cng'),
+    path('hospital_admin/staff_records/delete/<int:id>', views.delete_staff_record, name='adm_sr_dlt'),
+    path('hospital_admin/staff_records/add', views.add_staff, name='adm_sr_add'),
+    path('hospital_admin/staff_records/add_record', views.add_staff_record, name='adm_sr_add_rec'),
 
     path('hello/', views.add, name='hello')
 ]
