@@ -38,7 +38,9 @@ from pages.views import (ControllerHome, UIHome,
                          ControllerAddHospital, UIAddHospital,
                          ControllerStaffList, UIStaffList,
                          ControllerEditStaff, UIEditStaff,
-                         ControllerAddStaff, UIAddStuff)
+                         ControllerAddStaff, UIAddStuff,
+                         ControllerHospitalSearch, UIHospitalSearch,
+                         ControllerRegionChoose, UIRegionChoose)
 
 ui_home = UIHome()
 controller_home = ControllerHome(ui_home)
@@ -104,6 +106,12 @@ cntr_edit_staff = ControllerEditStaff(ui_staff_edit)
 ui_add_staff = UIAddStuff()
 cntr_add_staff = ControllerAddStaff(ui_add_staff)
 
+ui_hos_search = UIHospitalSearch()
+cntr_hos_search = ControllerHospitalSearch(ui_hos_search, "hos")
+
+ui_reg_choose = UIRegionChoose()
+cntr_reg_choose = ControllerRegionChoose(ui_reg_choose, "regs")
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -122,19 +130,15 @@ urlpatterns = [
     path('register_card/', controller_clt_reg_card.client_register_card_page, name='reg_card'),
     path('register_card/add/', controller_home.home, name='reg_card'),
 
-    # path('choose_medical_test/', controller_med_test.client_choose_med_test, name='choose_med_test'),
-
-    # path('cures/', controller_search_cure.client_find_cure, name='find_cures'),
-    # path('cures/<str:cure_title>', controller_search_cure.client_find_cure, name='find_cures_title'),
-
     path('client/', controller_log_in_clt.client_homepage, name='clt'),
-    path('client/doctor_card_order/', controller_log_in_clt.client_homepage, name='clt_dc_order'),
+    path('client/doctor_card_order/', controller_order_dc.client_filter_dc_page, name='clt_dc_order'),
+    path('client/doctor_card_order/doctor_cards_list/', controller_order_dc.client_dc_list_page, name='clt_dc_order_list'),
     path('client/medical_test_order/', controller_med_test.client_med_tests_page, name='clt_mt_order'),
     path('client/card_registration/', controller_clt_reg_card.client_register_card_page, name='clt_card_reg'),
     path('client/card_registration/add', controller_clt_reg_card.create_client_home, name='clt_card_reg_add'),
-    path('client/choose_region', controller_home.home, name='clt_region'),
+    path('client/choose_region', cntr_reg_choose.choose_region_page, name='clt_region'),
     path('client/cures_search', controller_search_cure.client_find_cure_page, name='clt_c_search'),
-    path('client/hospital_search', controller_log_in_clt.client_homepage, name='clt_h_search'),
+    path('client/hospital_search', cntr_hos_search.client_find_hospital_page, name='clt_h_search'),
 
     path('staff/', controller_log_in_stf.staff_homepage, name='stf'),
     path('staff/list/', controller_staff_clients.staff_client_list, name='stf_lst'),

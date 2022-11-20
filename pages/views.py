@@ -6,7 +6,8 @@ from hospital.models import (MedicalTestEntity,
                              CureEntity,
                              HospitalEntity,
                              StaffEntity,
-                             DoctorCardEntity)
+                             DoctorCardEntity,
+                             RegionEntity)
 
 import os
 
@@ -134,13 +135,16 @@ class ControllerOrderMedicalCard:
     def __init__(self, ui):
         self.ui = ui
     def client_filter_dc_page(self, request, *args, **kwargs):
+        path = os.path.join('client', 'order_doctor_card.html')
+
         dc = DoctorCardEntity.objects.all()
-        hospitals = set(dc.get('hospital_title'))
-        specialities = set(dc.get('doctor_speciality'))
-        date = set(dc.get('date'))
-        time = set(dc.get('time'))
+        hospitals = dc.values_list('hospital_title', flat=True).distinct()
+        specialities = dc.values_list('doctor_speciality', flat=True).distinct()
+        date = dc.values_list('date', flat=True).distinct()
+        time = dc.values_list('time', flat=True).distinct()
+
         staff_list = StaffEntity.objects.all()
-        staff = set(staff_list.get('name'))
+        staff = staff_list.values_list('name', flat=True).distinct()
         content = {
             "hospitals": hospitals,
             "specialities": specialities,
@@ -148,7 +152,7 @@ class ControllerOrderMedicalCard:
             "date": date,
             "time": time
         }
-        return render(request, self.ui.page, content)
+        return render(request, path, content)
     def select_hospital_page(self):
         pass
     def select_speciality_page(self):
@@ -162,6 +166,8 @@ class ControllerOrderMedicalCard:
     def submit_dc_page(self):
         pass
     def client_dc_list_page(self, request, *args, **kwargs):
+        path = os.path.join('client', 'order_dc_list.html')
+
         hospital = request.POST.get('hospitals')
         speciality = request.POST.get('specialities')
         name = request.POST.get('name')
@@ -170,11 +176,11 @@ class ControllerOrderMedicalCard:
 
         dc_list = DoctorCardEntity.objects.filter(
             hospital_title=hospital,
-            speciality=speciality,
+            doctor_speciality=speciality,
             date=date,
             time=time
         )
-        return render(request, self.ui.page, {"doctor_cards": dc_list, "name": name})
+        return render(request, path, {"doctor_cards": dc_list, "name": name})
     def __select_hospital(self):
         pass
     def __select_speciality(self):
@@ -186,10 +192,53 @@ class ControllerOrderMedicalCard:
     def __submit_dc(self):
         pass
 
-
 class UIOrderDoctorCard:
     def __init__(self):
         self.page = os.path.join('client', 'doctor_order_card.html')
+
+
+class UIHospitalSearch:
+    def __init__(self):
+        self.page = os.path.join('client', 'hospital_search.html')
+
+class ControllerHospitalSearch:
+    def __init__(self, ui, hospitals):
+        self.ui = ui
+        self.hospital = hospitals
+    def client_find_hospital_page(self, request, *args, **kwargs):
+        title = request.GET.get('hospital_search')
+        try:
+            cures = HospitalEntity.objects.filter(title=title)
+        except Exception:
+            content = {}
+        else:
+            content = {"cures": cures}
+        return render(request, self.ui.page, content)
+    def create_client_page(self):
+        pass
+    def choose_sections_page(self):
+        pass
+    def choose_staff_page(self):
+        pass
+    def __search(self):
+        pass
+    def __choose_section(self):
+        pass
+    def __choose_staff(self):
+        pass
+
+
+class UIRegionChoose:
+    def __init__(self):
+        self.page = os.path.join('client', 'region_search.html')
+
+class ControllerRegionChoose:
+    def __init__(self, ui, region):
+        self.ui = ui
+        self.region = region
+    def choose_region_page(self, request, *args, **kwargs):
+        regions = RegionEntity.objects.all().values()
+        return render(request, self.ui.page, {"countries": regions})
 
 class ControllerStaffCardRegistration:
     def __init__(self, ui):
